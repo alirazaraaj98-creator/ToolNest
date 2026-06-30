@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Age Calculator - SmartTools</title>
+
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#f4f7fc;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
+}
+
+.box{
+background:#fff;
+padding:30px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,.1);
+width:350px;
+text-align:center;
+}
+
+h1{
+color:#2563eb;
+}
+
+input{
+width:100%;
+padding:12px;
+margin:20px 0;
+font-size:16px;
+}
+
+button{
+background:#2563eb;
+color:white;
+border:none;
+padding:12px 20px;
+border-radius:8px;
+cursor:pointer;
+width:100%;
+font-size:16px;
+}
+
+#result{
+margin-top:20px;
+font-size:18px;
+font-weight:bold;
+}
+</style>
+
+</head>
+<body>
+
+<div class="box">
+
+<h1>Age Calculator</h1>
+
+<input type="date" id="dob">
+
+<button onclick="calculateAge()">Calculate</button>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+
+function calculateAge(){
+
+let dob=document.getElementById("dob").value;
+
+if(!dob){
+alert("Select your Date of Birth");
+return;
+}
+
+let birth=new Date(dob);
+let today=new Date();
+
+let age=today.getFullYear()-birth.getFullYear();
+
+let month=today.getMonth()-birth.getMonth();
+
+if(month<0 || (month===0 && today.getDate()<birth.getDate())){
+age--;
+}
+
+document.getElementById("result").innerHTML=
+"Your Age is <br><br>"+age+" Years";
+
+}
+
+</script>
+
+</body>
+</html>
